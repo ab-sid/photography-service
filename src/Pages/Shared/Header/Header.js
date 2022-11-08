@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     return (
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">AB Siddique</Navbar.Brand>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                    <Nav className="ms-auto align-items-center">
+
+                        <Link className='me-2 text-decoration-none' to='/login'>Login</Link>
+                        <Nav.Link>{user?.displayName}</Nav.Link>
+                        <Link className='me-2 text-decoration-none' to='/home'><Nav.Link>Test</Nav.Link></Link>
                     </Nav>
                 </Container>
             </Navbar>

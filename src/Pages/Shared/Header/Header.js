@@ -4,19 +4,41 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import Button from 'react-bootstrap/Button';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <Navbar bg="dark" variant="dark">
                 <Container>
                     <Navbar.Brand href="#home">AB Siddique</Navbar.Brand>
                     <Nav className="ms-auto align-items-center">
+                        <Link className='me-2 text-decoration-none' to='/home'>Home</Link>
+                        <Link className='me-2 text-decoration-none' to='/home'>Services</Link>
 
-                        <Link className='me-2 text-decoration-none' to='/login'>Login</Link>
-                        <Nav.Link>{user?.displayName}</Nav.Link>
-                        <Link className='me-2 text-decoration-none' to='/home'><Nav.Link>Test</Nav.Link></Link>
+                        <Nav.Link href='#deets'>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span className='me-2'>{user?.displayName}</span>
+                                        <Link className='me-2 text-decoration-none' to='/addservices'>Add Services</Link>
+                                        <Link className='me-2 text-decoration-none' to='/myreview'>My Review</Link>
+                                        <Button onClick={handleLogOut} variant="outline-warning">Log Out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Link className='me-2 text-decoration-none' to='/login'>Login</Link>
+
+                                    </>
+                            }
+                        </Nav.Link>
+
                     </Nav>
                 </Container>
             </Navbar>

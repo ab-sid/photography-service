@@ -17,7 +17,7 @@ const SingleService = () => {
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
-    console.log(reviews);
+
 
     const { _id, img, title, description, price } = useLoaderData()
 
@@ -25,12 +25,14 @@ const SingleService = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const email = form.email.value;
         const img = form.img.value;
         const review = form.review.value;
 
         const addReview = {
             service: _id,
             name,
+            email,
             img,
             review
         }
@@ -79,6 +81,11 @@ const SingleService = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Name</Form.Label>
                         <Form.Control name='name' type="text" placeholder="Enter name" required />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control name='email' type="email" placeholder="Enter email" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">

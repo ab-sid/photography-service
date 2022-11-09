@@ -11,12 +11,14 @@ const AddService = () => {
         const price = form.price.value;
         const img = form.img.value;
         const description = form.description.value;
+        const date = form.date.value;
 
         const addService = {
             title,
             price,
             img,
-            description
+            description,
+            date
         }
         fetch('http://localhost:5000/addservice', {
             method: 'POST',
@@ -51,6 +53,11 @@ const AddService = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Image</Form.Label>
                     <Form.Control name='img' type="text" placeholder="Enter Image link" required />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Label>Date</Form.Label>
+                    <Form.Control name='date' type="date" placeholder="Enter date" required />
                 </Form.Group>
                 <FloatingLabel controlId="floatingTextarea2" label="Description">
                     <Form.Control

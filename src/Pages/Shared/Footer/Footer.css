@@ -1,0 +1,24 @@
+.footer-social a {
+    padding: 10px;
+}
+
+.footer-nav {
+    border-bottom: 1px solid gray;
+
+}
+
+.footer-nav a {
+    color: gray;
+    margin-left: 40px;
+    text-decoration: none;
+    padding-bottom: 20px;
+    margin-top: 20px;
+}
+
+.footer-nav a:first-child {
+    margin-left: 0;
+}
+
+.copyright {
+    color: gray;
+}

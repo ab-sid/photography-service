@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../ServiceCard/ServiceCard';
 import './Services.css';
 
@@ -18,6 +19,8 @@ const Services = () => {
                     services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
+            <Link className='text-center' to='/services'><Button variant="primary">See All</Button></Link>
+
         </>
     );
 };

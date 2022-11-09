@@ -20,14 +20,14 @@ const Header = () => {
                     <Navbar.Brand href="#home">AB Siddique</Navbar.Brand>
                     <Nav className="ms-auto align-items-center">
                         <Link className='me-2 text-decoration-none' to='/home'>Home</Link>
-                        <Link className='me-2 text-decoration-none' to='/home'>Services</Link>
+                        <Link className='me-2 text-decoration-none' to='/services'>Services</Link>
 
                         <Nav.Link href='#deets'>
                             {
                                 user?.uid ?
                                     <>
                                         <span className='me-2'>{user?.displayName}</span>
-                                        <Link className='me-2 text-decoration-none' to='/addservices'>Add Services</Link>
+                                        <Link className='me-2 text-decoration-none' to='/addservice'>Add Services</Link>
                                         <Link className='me-2 text-decoration-none' to='/myreview'>My Review</Link>
                                         <Button onClick={handleLogOut} variant="outline-warning">Log Out</Button>
                                     </>

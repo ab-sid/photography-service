@@ -1,4 +1,6 @@
 import Main from "../../Layout/Main";
+import AddService from "../../Pages/AddService/AddService";
+import AllServices from "../../Pages/AllServices/AllServices";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -31,6 +33,15 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/services',
+                element: <AllServices></AllServices>,
+                loader: () => fetch('http://localhost:5000/services')
+            },
+            {
+                path: '/addservice',
+                element: <AddService></AddService>
             }
         ]
     }

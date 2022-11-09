@@ -20,9 +20,10 @@ const MyReview = () => {
 
             <div className='my-review-section'>
                 {
-                    myreviews.map(myreview => <SingleMyReview key={myreview._id} myreview={myreview}></SingleMyReview>)
+                    myreviews.length > 0 ?
+                        myreviews.map(myreview => <SingleMyReview key={myreview._id} myreview={myreview}></SingleMyReview>) :
+                        <h4 className='text-center'>You have no Review</h4>
                 }
-
             </div>
         </div>
     );

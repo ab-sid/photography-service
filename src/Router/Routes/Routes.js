@@ -6,6 +6,7 @@ import Login from "../../Pages/Login/Login";
 import MyReview from "../../Pages/MyReview/MyReview";
 import Register from "../../Pages/Register/Register";
 import SingleService from "../../Pages/SingleService/SingleService";
+import UpdateReview from "../../Pages/UpdateReview/UpdateReview";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
             {
                 path: '/myreview',
                 element: <MyReview></MyReview>
+            },
+            {
+                path: '/update/:id',
+                element: <UpdateReview></UpdateReview>,
+                loader: ({ params }) => fetch(`http://localhost:5000/myreview/${params.id}`)
             }
         ]
     }

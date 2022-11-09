@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
+
+
 const SingleMyReview = ({ myreview }) => {
+
     const { _id, img, name, review } = myreview;
+
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
@@ -20,6 +23,7 @@ const SingleMyReview = ({ myreview }) => {
                 })
         }
     }
+
     return (
         <div>
             <Card style={{ width: '18rem' }} className='mb-3'>
@@ -29,7 +33,7 @@ const SingleMyReview = ({ myreview }) => {
                     <Card.Text>
                         {review}
                     </Card.Text>
-                    <Button className='me-5' variant="primary">Edit</Button>
+                    <Link to={`/update/${_id}`}><Button className='me-5' variant="primary">Edit</Button></Link>
                     <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
                 </Card.Body>
             </Card>

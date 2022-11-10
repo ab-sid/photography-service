@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 import SingleMyReview from '../SingleMyReview/SingleMyReview';
+import MyRev from './MyRev';
 import './MyReview.css';
 
 const MyReview = () => {
@@ -16,6 +18,24 @@ const MyReview = () => {
             .then(res => res.json())
             .then(data => setMyreviews(data))
     }, [user?.email])
+
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure?');
+        if (proceed) {
+            fetch(`https://assignment-11-server-psi-seven.vercel.app/myreviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast('deleted successfully');
+                        const remaining = myreviews.filter(myre => myre._id !== id);
+                        setMyreviews(remaining);
+                    }
+                })
+        }
+    }
     return (
         <div>
             <Container>
@@ -26,7 +46,8 @@ const MyReview = () => {
                         <div className='my-review-section'>
                             {
                                 myreviews.length > 0 ?
-                                    myreviews.map(myreview => <SingleMyReview key={myreview._id} myreview={myreview}></SingleMyReview>)
+                                    //myreviews.map(myreview => <SingleMyReview key={myreview._id} myreview={myreview}></SingleMyReview>)
+                                    myreviews.map(myreview => <MyRev key={myreview._id} myreview={myreview} handleDelete={handleDelete}></MyRev>)
                                     :
                                     <h4 className='text-center text-danger'>You Added No Review Yet!!</h4>
                             }

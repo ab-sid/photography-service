@@ -15,9 +15,8 @@ const SingleService = () => {
     const [reviews, setReviews] = useState([]);
     console.log(reviews);
     const { user } = useContext(AuthContext);
-    // const url = `http://localhost:5000/reviews?service=${_id}`;
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?service=${_id}`)
+        fetch(`https://assignment-11-server-psi-seven.vercel.app/reviews?service=${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -42,7 +41,7 @@ const SingleService = () => {
             img,
             review
         }
-        fetch('http://localhost:5000/addreview', {
+        fetch('https://assignment-11-server-psi-seven.vercel.app/addreview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

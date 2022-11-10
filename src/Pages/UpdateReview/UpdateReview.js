@@ -15,7 +15,7 @@ const UpdateReview = () => {
         const name = form.name.value;
         const review = form.review.value;
         console.log(rev);
-        fetch(`http://localhost:5000/myreview/${storedReview._id}`, {
+        fetch(`https://assignment-11-server-psi-seven.vercel.app/myreview/${storedReview._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -40,8 +40,7 @@ const UpdateReview = () => {
     }
     return (
         <div className='w-50 mx-auto'>
-            <h1>Please Update{storedReview.name}</h1>
-            <h1>Please Update{storedReview.review}</h1>
+            <h1 className='my-3'>Update Review</h1>
 
             <Form onSubmit={handleUpdate}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

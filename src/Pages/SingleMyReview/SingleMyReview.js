@@ -13,7 +13,7 @@ const SingleMyReview = ({ myreview }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure?');
         if (proceed) {
-            fetch(`http://localhost:5000/myreviews/${id}`, {
+            fetch(`https://assignment-11-server-psi-seven.vercel.app/myreviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

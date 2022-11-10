@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Spinner } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import useTitle from '../../hooks/useTitle';
 
 
 const Blog = () => {
+    const { loading } = useContext(AuthContext);
     useTitle('Blog');
+    if (loading) {
+        return <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
+    }
     return (
         <div>
             <h1 className='my-4 text-center'>Here is Some Question & Answer</h1>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import Spinner from 'react-bootstrap/Spinner';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -36,9 +37,13 @@ const Login = () => {
             })
             .catch(error => console.error(error))
     }
-
     return (
         <div className='w-50 mx-auto mt-5'>
+            <div id='loader' className='text-center d-none'>
+                <Spinner animation="border" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

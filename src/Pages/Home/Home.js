@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import useTitle from '../../hooks/useTitle';
 import Banner from '../Banner/Banner';
 import BookNow from '../BookNow/BookNow';
@@ -7,7 +7,9 @@ import Services from '../Services/Services';
 
 
 const Home = () => {
+
     useTitle('Home');
+
     return (
         <div>
             <Banner></Banner>

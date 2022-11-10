@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,7 +8,7 @@ import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, loading } = useContext(AuthContext);
     useTitle('Register');
     const handleSubmit = event => {
         event.preventDefault();
@@ -24,6 +25,11 @@ const Register = () => {
                 navigate('/login')
             })
             .catch(e => console.error(e));
+    }
+    if (loading) {
+        return <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </Spinner>
     }
     return (
         <div className='w-50 mx-auto mt-5'>

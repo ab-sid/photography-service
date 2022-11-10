@@ -43,7 +43,7 @@ const AddService = () => {
     useTitle('Add Service');
     return (
         <div className='w-50 mx-auto mt-5'>
-            <h1 className='text-center mb-4'>Add a Service</h1>
+            <h1 className='text-center mb-4'>Add Service</h1>
             <Form onSubmit={handleAddService}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Title</Form.Label>

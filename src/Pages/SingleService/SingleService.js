@@ -30,6 +30,7 @@ const SingleService = () => {
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
+        const date = form.date.value;
         const img = form.img.value;
         const review = form.review.value;
 
@@ -37,6 +38,7 @@ const SingleService = () => {
             service: _id,
             name,
             email,
+            date,
             img,
             review
         }
@@ -90,6 +92,11 @@ const SingleService = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control name='email' type="email" placeholder="Enter email" required />
+                    </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Label>Date</Form.Label>
+                        <Form.Control name='date' type="date" placeholder="Enter date" required />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">

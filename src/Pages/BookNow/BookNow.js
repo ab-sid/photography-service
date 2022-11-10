@@ -5,12 +5,13 @@ import img from '../../Assets/Images/Banner/B-4.jpeg';
 
 const BookNow = () => {
     return (
-        <div>
+        <div className='mt-5'>
+            <h1 className='text-center mt-3 mb-5 text-warning'>Book Now</h1>
             <Container>
                 <Row className='justify-content-between'>
                     <Col lg='6'>
                         <div>
-                            <img className='img-fluid' src={img} alt="" srcset="" />
+                            <img className='img-fluid rounded' src={img} alt="" srcset="" />
                         </div>
                     </Col>
                     <Col lg='6'>

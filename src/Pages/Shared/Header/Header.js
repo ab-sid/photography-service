@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import Button from 'react-bootstrap/Button';
+import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -15,31 +16,26 @@ const Header = () => {
     }
     return (
         <div>
-            <Navbar bg="dark" variant="dark">
+            <Navbar bg="dark" variant="dark" expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">AB Siddique</Navbar.Brand>
-                    <Nav className="ms-auto align-items-center">
-                        <Link className='me-2 text-decoration-none' to='/home'>Home</Link>
-                        <Link className='me-2 text-decoration-none' to='/services'>Services</Link>
-                        <Link className='me-2 text-decoration-none' to='/blog'>Blog</Link>
-
-                        <Nav.Link href='#deets'>
-                            {
-                                user?.uid ?
-                                    <>
-                                        <Link className='me-2 text-decoration-none' to='/addservice'>Add Services</Link>
-                                        <Link className='me-2 text-decoration-none' to='/myreview'>My Review</Link>
-                                        <Button onClick={handleLogOut} variant="outline-warning">Log Out</Button>
-                                    </>
-                                    :
-                                    <>
-                                        <Link className='me-2 text-decoration-none' to='/login'>Login</Link>
-
-                                    </>
+                    <Navbar.Toggle aria-controls="navbarScroll" />
+                    <Navbar.Collapse id="navbarScroll">
+                        <Nav className="ms-auto align-items-center">
+                            <Link className='me-2 text-decoration-none' to='/home'>Home</Link>
+                            <Link className='me-2 text-decoration-none' to='/services'>Services</Link>
+                            <Link className='me-2 text-decoration-none' to='/blog'>Blog</Link>
+                            {user?.uid ?
+                                <>
+                                    <Link className='me-2 text-decoration-none' to='/addservice'>Add Services</Link>
+                                    <Link className='me-2 text-decoration-none' to='/myreview'>My Review</Link>
+                                    <Button onClick={handleLogOut} variant="outline-secondary">Log Out</Button>
+                                </>
+                                :
+                                <Link className='me-2 text-decoration-none' to='/login'>Login</Link>
                             }
-                        </Nav.Link>
-
-                    </Nav>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
         </div>

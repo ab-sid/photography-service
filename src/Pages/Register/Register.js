@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -33,28 +33,35 @@ const Register = () => {
     }
     return (
         <div className='w-50 mx-auto mt-5'>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Your Name</Form.Label>
-                    <Form.Control name='name' type="text" placeholder="Enter name" />
+            <Container>
+                <Row>
+                    <Col lg='12'>
+                        <h1 className='text-center mb-3 text-warning'>Register</h1>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Your Name</Form.Label>
+                                <Form.Control name='name' type="text" placeholder="Enter name" />
 
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" required />
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control name='email' type="email" placeholder="Enter email" required />
 
-                </Form.Group>
+                            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" required />
-                </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control name='password' type="password" placeholder="Password" required />
+                            </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Register
-                </Button>
-                <h5>Already have an Accout?<Link to='/login'>Login</Link></h5>
-            </Form>
+                            <Button variant="primary" type="submit">
+                                Register
+                            </Button>
+                            <h5 className='mt-2'>Already have an Accout?<Link to='/login'>Login</Link></h5>
+                        </Form>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };

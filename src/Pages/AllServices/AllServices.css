@@ -2,3 +2,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
+
+@media (max-width: 576px) {
+    .all-services-section {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Spinner } from 'react-bootstrap';
+import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ServiceCard from '../ServiceCard/ServiceCard';
@@ -20,13 +20,19 @@ const Services = () => {
     }
     return (
         <>
-            <h1 className='text-center'>Services</h1>
-            <div className='serviceCard-section'>
-                {
-                    services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
-                }
-            </div>
-            <Link className='text-center' to='/services'><Button variant="primary">See All</Button></Link>
+            <Container>
+                <Row>
+                    <Col lg='12'>
+                        <h1 className='text-center mt-3 mb-5 text-warning'>Services</h1>
+                        <div className='serviceCard-section'>
+                            {
+                                services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                            }
+                        </div>
+                        <Link className='d-block text-center mt-2' to='/services'><Button variant="outline-secondary">See All</Button></Link>
+                    </Col>
+                </Row>
+            </Container>
 
         </>
     );

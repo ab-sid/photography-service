@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 import Spinner from 'react-bootstrap/Spinner';
+import { Col, Container, Row } from 'react-bootstrap';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -44,24 +45,31 @@ const Login = () => {
                     <span className="visually-hidden">Loading...</span>
                 </Spinner>
             </div>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name='email' type="email" placeholder="Enter email" />
+            <Container>
+                <Row>
+                    <Col lg='12'>
+                        <h1 className='mt-1 mb-3 text-center text-warning'>Please Login</h1>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control name='email' type="email" placeholder="Enter email" />
 
-                </Form.Group>
+                            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name='password' type="password" placeholder="Password" />
-                </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control name='password' type="password" placeholder="Password" />
+                            </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
-                <h5>Create an Accout?<Link to='/register'>Register</Link></h5>
-            </Form>
-            <Button className='mt-5' onClick={handleGoogleSignIn} variant="outline-primary">Login With Google</Button>
+                            <Button variant="primary" type="submit">
+                                Login
+                            </Button>
+                            <h5 className='mt-2'>Create an Accout?<Link to='/register'>Register</Link></h5>
+                        </Form>
+                        <Button className='mt-5' onClick={handleGoogleSignIn} variant="outline-primary">Login With Google</Button>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 };

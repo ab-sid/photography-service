@@ -3,9 +3,11 @@ import React, { useContext, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 const Login = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const { googleLoginProvider, signIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
 
@@ -14,7 +16,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -29,7 +31,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 form.reset();
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

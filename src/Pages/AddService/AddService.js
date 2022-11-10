@@ -2,6 +2,8 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
     const handleAddService = event => {
@@ -31,7 +33,7 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Service Added Successfully')
+                    toast('Service Added Successfully');
                     form.reset();
                 }
             })
@@ -72,6 +74,7 @@ const AddService = () => {
                     Add Service
                 </Button>
             </Form>
+            <ToastContainer />
         </div>
     );
 };

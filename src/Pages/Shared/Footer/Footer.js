@@ -9,6 +9,7 @@ const Footer = () => {
             <div className='footer-nav d-flex justify-content-center align-items-center'>
                 <Nav.Link><Link to='/home'>Home</Link></Nav.Link>
                 <Nav.Link><Link to='/services'>Services</Link></Nav.Link>
+                <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
                 <Nav.Link><Link to='/login'>Login</Link></Nav.Link>
             </div>
             <div className='pt-3 copyright'>

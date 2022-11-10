@@ -1,6 +1,8 @@
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -18,7 +20,7 @@ const SingleMyReview = ({ myreview }) => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert('deleted successfully');
+                        toast('deleted successfully');
                     }
                 })
         }
@@ -37,7 +39,9 @@ const SingleMyReview = ({ myreview }) => {
                     <Button onClick={() => handleDelete(_id)} variant="danger">Delete</Button>
                 </Card.Body>
             </Card>
+            <ToastContainer />
         </div>
+
     );
 };
 

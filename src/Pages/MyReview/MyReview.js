@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import SingleMyReview from '../SingleMyReview/SingleMyReview';
 import './MyReview.css';
@@ -22,7 +21,7 @@ const MyReview = () => {
                 {
                     myreviews.length > 0 ?
                         myreviews.map(myreview => <SingleMyReview key={myreview._id} myreview={myreview}></SingleMyReview>) :
-                        <h4 className='text-center'>You have no Review</h4>
+                        <h4 className='text-center'>You Added No Review Yet!!</h4>
                 }
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -6,11 +6,14 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ReviewAll from '../ReviewAll/ReviewAll';
 import './SingleService.css';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 
 
 const SingleService = () => {
     const [reviews, setReviews] = useState([]);
+    console.log(reviews);
+    const { user } = useContext(AuthContext);
     // const url = `http://localhost:5000/reviews?service=${_id}`;
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?service=${_id}`)
@@ -101,9 +104,14 @@ const SingleService = () => {
                             required
                         />
                     </FloatingLabel>
-                    <Button className='mt-3' variant="primary" type="submit">
-                        Add Review
-                    </Button>
+                    {user?.email ?
+                        <Button className='mt-3' variant="primary" type="submit">
+                            Add Review
+                        </Button> :
+                        <p>Please Log In first to add a review<Link to='/login'>Login</Link></p>
+                    }
+
+
                 </Form>
             </div>
         </div>

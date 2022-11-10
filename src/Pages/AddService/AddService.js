@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../hooks/useTitle';
 
 const AddService = () => {
     const handleAddService = event => {
@@ -39,6 +40,7 @@ const AddService = () => {
             })
             .catch(e => console.error(e))
     }
+    useTitle('Add Service');
     return (
         <div className='w-50 mx-auto mt-5'>
             <h1 className='text-center mb-4'>Add a Service</h1>

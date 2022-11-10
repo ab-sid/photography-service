@@ -7,7 +7,8 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import ReviewAll from '../ReviewAll/ReviewAll';
 import './SingleService.css';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SingleService = () => {
@@ -50,7 +51,7 @@ const SingleService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Review Added Successfully')
+                    toast('Review Added successfully');
                     form.reset();
                 }
             })
@@ -114,6 +115,7 @@ const SingleService = () => {
 
                 </Form>
             </div>
+            <ToastContainer />
         </div>
 
     );

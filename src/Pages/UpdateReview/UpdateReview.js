@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateReview = () => {
     const storedReview = useLoaderData();
@@ -23,7 +25,7 @@ const UpdateReview = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    alert('Review Updated')
+                    toast('Review Updated successfully');
                 }
             })
 
@@ -57,6 +59,7 @@ const UpdateReview = () => {
                 </Button>
 
             </Form>
+            <ToastContainer />
         </div>
     );
 };

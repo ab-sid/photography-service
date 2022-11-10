@@ -4,13 +4,14 @@ import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const { googleLoginProvider, signIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
-
+    useTitle('Login');
     const handleGoogleSignIn = () => {
         googleLoginProvider(googleProvider)
             .then(result => {
